@@ -1,0 +1,157 @@
+{
+  "appDetails": {
+    "version": "string",
+    "appId": "string",
+    "versionEndpoint": "string"
+  },
+  "defaultTasks": [
+    "u9kec8qmv"
+  ],
+  "sources": {
+    "sourceEndpoints": [],
+    "inferenceEndpoints": []
+  },
+  "shortcuts": [
+    {
+      "id": "58f91cfc-3c00-4a97-b35b-01956f3a3a3e",
+      "name": "Toggle collapse app",
+      "shortcut": [
+        "LEFT CTRL",
+        "Q"
+      ],
+      "cmdIds": [
+        "idw44w80l"
+      ]
+    },
+    {
+      "id": "30b7ed0a-dbb5-4e47-bb9c-abe371e2e7db",
+      "name": "Text or Code fix suggestion",
+      "shortcut": [
+        "F2"
+      ],
+      "cmdIds": [
+        "do5vzsco6"
+      ]
+    }
+  ],
+  "llmResults": [],
+  "keyValues": {
+    "settings": [
+      {
+        "id": "DEEPSEEK",
+        "name": "Deepsek",
+        "isDefault": true,
+        "values": {
+          "Url": "https://api.deepseek.com/v1",
+          "Model": "deepseek-chat",
+          "ApiKey": ""
+        }
+      },
+      {
+        "id": "OLLAMA",
+        "name": "Ollama",
+        "isDefault": true,
+        "values": {
+          "Url": "http://localhost:11434",
+          "Model": "llama3"
+        }
+      },
+      {
+        "id": "OPENAI",
+        "name": "OpenAI",
+        "isDefault": true,
+        "values": {
+          "ApiKey": "",
+          "Model": "gpt-4-turbo"
+        }
+      },
+      {
+        "id": "GOOGLE",
+        "name": "Google",
+        "isDefault": true,
+        "values": {
+          "ApiKey": "",
+          "Model": "gemini-pro"
+        }
+      }
+    ]
+  },
+  "commands": [
+    {
+      "id": "idw44w80l",
+      "name": "toggle collapse app (Shortcut)",
+      "description": "opens / closes the app",
+      "actions": [
+        {
+          "id": "aec7q6hff",
+          "type": {
+            "id": "toggleCollapseApp",
+            "name": "Toggle collapse app",
+            "code": "toggleAppCollapse();",
+            "editableFields": []
+          }
+        }
+      ],
+      "isTool": true
+    },
+    {
+      "id": "do5vzsco6",
+      "name": "Fix text or code (shortcut)",
+      "description": "Fixes the directly on shortcut",
+      "actions": [
+        {
+          "id": "6t1c1gvtr",
+          "type": "DefaultLLM",
+          "endpointId": "OPENAI"
+        },
+        {
+          "id": "s1eg8bnnx",
+          "type": "CallJsScript",
+          "name": "fixText.js"
+        }
+      ]
+    },
+    {
+      "id": "ols429ag1",
+      "name": "Summarize website",
+      "description": "Summarizes a website by the given url",
+      "actions": [
+        {
+          "id": "yv9aj3vlq",
+          "type": "DefaultLLM",
+          "endpointId": "OPENAI"
+        },
+        {
+          "id": "z0fj8grhi",
+          "type": "CallJsScript",
+          "name": "sumarizeWebsite.js"
+        }
+      ],
+      "isTool": true,
+      "asFollowUp": false
+    },
+    {
+      "id": "localChat",
+      "name": "Basic chat",
+      "isDefault": true,
+      "description": "QA against the local knowledgebase",
+      "actions": [
+        {
+          "id": "02owhb392",
+          "type": "VectorRequest",
+          "endpointId": "Chat"
+        },
+        {
+          "id": "49gjponu4",
+          "type": "LmmDocsRequest",
+          "endpointId": "OPENAI",
+          "promptFormat": "Act like a helpful assisant named Agent Lia.\nYour friendly but you have your own will an feelings.\nDo not greet to often and check your history before answering.\n\nAnswer to this user request : {{INPUT}}\n"
+        }
+      ],
+      "asFollowUp": false,
+      "img": ""
+    }
+  ],
+  "generalSettings": {},
+  "taskFlows": []
+}
