@@ -8,8 +8,10 @@
 ! UNDER CONSTRUCTION !
 </center>
 
-<video src="https://www.agentlia.xyz/lovable-uploads/demo.mp4" autoplay loop muted playsinline>
-</video>
+
+https://github.com/user-attachments/assets/904075f9-70a5-4873-ac01-02994571dff4
+
+
 
 ## Features
 
